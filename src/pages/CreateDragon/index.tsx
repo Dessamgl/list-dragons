@@ -17,7 +17,7 @@ const CreateDragon: React.FC = () => {
   const [type, setType] = useState('');
 
   useEffect(() => {
-    if(location.state) {
+    if (location.state) {
       setName(dragon.name);
       setType(dragon.type);
     }
@@ -26,7 +26,7 @@ const CreateDragon: React.FC = () => {
   const verifyField = name === '' || type === '';
 
   async function handleSave() {
-   await api.post('/api/v1/dragon', {
+    await api.post('/api/v1/dragon', {
       name,
       type,
     })
@@ -41,17 +41,17 @@ const CreateDragon: React.FC = () => {
       name,
       type
     }
-     await api.put(`/api/v1/dragon/${id}`, data);
-      alert('Atualizado com sucesso!')
+    await api.put(`/api/v1/dragon/${id}`, data);
+    alert('Atualizado com sucesso!')
 
-      history.push('/list');
-    }
+    history.push('/list');
+  }
 
   return (
     <>
       <Header />
       <Container>
-      <h2>{!location.state ? 'Criar' : 'Editar'}</h2>
+        <h2>{!location.state ? 'Criar' : 'Editar'}</h2>
         <Content>
           <Input
             name="name"
@@ -71,7 +71,8 @@ const CreateDragon: React.FC = () => {
             }}
           />
           <button type="button" disabled={verifyField} onClick={() => {
-            !location.state ? handleSave() : handleEdit(dragon.id)}}>
+            !location.state ? handleSave() : handleEdit(dragon.id)
+          }}>
             SALVAR
           </button>
         </Content>

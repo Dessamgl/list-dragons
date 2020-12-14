@@ -31,6 +31,7 @@ export const TableContainer = styled.section`
       padding: 20px 32px;
       align-items: center;
       border: 0;
+      width: 50%;
       background: #fff;
       font-size: 16px;
       font-weight: normal;

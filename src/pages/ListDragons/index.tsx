@@ -26,10 +26,12 @@ const ListDragons: React.FC = () => {
     api.get('/api/v1/dragon').then(response => {
       const dragonsList: DragonData[] = response.data;
       const orderDragons = dragonsList.sort((a, b) => {
-        if (a.name > b.name) {
+        let nameA = a.name.toLowerCase();
+        let nameB = b.name.toLowerCase();
+        if (nameA > nameB) {
           return 1;
         }
-        if (b.name > a.name) {
+        if (nameB > nameA) {
           return -1
         }
         return 0;
@@ -47,7 +49,7 @@ const ListDragons: React.FC = () => {
     <>
       <Header />
       <Container>
-      <h2>Lista</h2>
+        <h2>Lista</h2>
         <TableContainer>
           <table>
             <thead>
@@ -60,16 +62,16 @@ const ListDragons: React.FC = () => {
             <tbody>
               {dragons.map(dragon => (
                 <tr key={dragon.id}>
-                  <td className="title" onClick={() => history.push({pathname: '/detailDragon', state: dragon })}>{dragon.name}</td>
+                  <td className="title" onClick={() => history.push({ pathname: '/detailDragon', state: dragon })}>{dragon.name.toLowerCase()}</td>
                   <td>
                     <button className="edit" type="button" onClick={() => {
-                      history.push({pathname: '/createDragon', state: dragon });
+                      history.push({ pathname: '/createDragon', state: dragon });
                     }}>
                       Editar
                     </button>
                     <button
                       className="delete"
-                      onClick={() => {handleDelete(dragon.id)}}
+                      onClick={() => { handleDelete(dragon.id) }}
                       type="button"
                     >
                       Excluir

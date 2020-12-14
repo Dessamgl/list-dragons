@@ -23,7 +23,7 @@
   "plugins": [
     "react",
     "react-hooks",
-    "@typescript-eslint",
+    "@typescript-eslint"
   ],
   "rules": {
     "no-use-before-define": "off",
